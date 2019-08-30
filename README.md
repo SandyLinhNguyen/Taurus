@@ -1,2 +1,2 @@
 # Taurus
-Taurus Test scenario
+Learn about Taurus, create file yml to test performance
