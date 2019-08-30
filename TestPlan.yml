@@ -1,0 +1,29 @@
+# GLOBAL SETTING
+scenarios:
+  get-requests:
+    store-cache: true # mô phỏng lưu cache browser
+    store-cookie: true # mô phỏng lưu cookies
+    headers: # global header
+      header-name: header-value
+    think-time: 1s500ms # global delay each request
+    timeout: 500ms # timeout cho connecting cũng như là nhận results
+    default-address: "http://172.27.100.180:8080" # http request default
+    keepalive: true # true by default, apply cho tất cả request trong scenario
+    retrieve-resources: true # lấy tất cả embedded resource từ html pages
+    # retrieve-resources-regex: ^((?!google|facebook).)*$ # regex used to match any resource
+    # concurrent-pool-size: 4 # concurrent pool size for resources download, 4 by default
+    user-dns-cache-mgr: true # Sử dụng dns cache manager để test resources
+    force-parent-sample: false # genarate only parent sample for transaction controller
+    content-encoding: utf-8 # font chữ là utf8 apply cho tất cả các requests
+    follow-redirects: true # follow redirects for all http requests
+    random-source-ip: false # use one of host IPs to send requests, chosen randomly, chọn false làm default
+    
+    #data sources: Taurus cho phép sử dụng external CSV files để sử dụng cho các mục đích test
+    data-source: # list of external data sources
+    - path: /root/result.csv # lưu file result.csv vào thư mục root và tên file là result.scv
+      delimiter: ';' # CSV delimiter, auto-detected by default
+      quoted: false # allow quoted data, ignored when random-order is true
+      loop: true # loop over in case of end-of-file reached if true, stop executing if false
+      variable-names: id, name # delimiter-separated list of variable names
+      random-order: true # enables randomizing plugin, false by default
+      
